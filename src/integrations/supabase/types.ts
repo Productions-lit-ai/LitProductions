@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_events: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          label: string | null
+          path: string | null
+          referrer: string | null
+          session_id: string | null
+          url: string | null
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          label?: string | null
+          path?: string | null
+          referrer?: string | null
+          session_id?: string | null
+          url?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          label?: string | null
+          path?: string | null
+          referrer?: string | null
+          session_id?: string | null
+          url?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      contact_rate_limits: {
+        Row: {
+          created_at: string
+          id: string
+          ip_hash: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ip_hash: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ip_hash?: string
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           company: string | null
@@ -22,6 +79,7 @@ export type Database = {
           id: string
           message: string
           name: string
+          phone: string | null
         }
         Insert: {
           company?: string | null
@@ -30,6 +88,7 @@ export type Database = {
           id?: string
           message: string
           name: string
+          phone?: string | null
         }
         Update: {
           company?: string | null
@@ -38,6 +97,7 @@ export type Database = {
           id?: string
           message?: string
           name?: string
+          phone?: string | null
         }
         Relationships: []
       }
@@ -306,6 +366,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "user"
